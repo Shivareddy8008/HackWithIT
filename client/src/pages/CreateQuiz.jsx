@@ -19,7 +19,7 @@ export default function CreateQuiz() {
     const user = JSON.parse(localStorage.getItem('user'));
     setSaving(true);
     try {
-      const res = await fetch('http://localhost:5000/api/quiz/create', {
+      const res = await fetch('https://hackwithit-1.onrender.com/api/quiz/create', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ category, title, questions, creatorId: user._id })
       });

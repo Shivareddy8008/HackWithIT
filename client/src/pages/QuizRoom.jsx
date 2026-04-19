@@ -110,7 +110,7 @@ export default function QuizRoom() {
     if (data) {
       setQuiz(JSON.parse(data));
     } else if (roomCode) {
-      fetch(`http://localhost:5000/api/quiz/room/${roomCode}`)
+      fetch(`https://hackwithit-1.onrender.com/api/quiz/room/${roomCode}`)
         .then(res => res.json())
         .then(r => {
           if (r && r.quizId) {

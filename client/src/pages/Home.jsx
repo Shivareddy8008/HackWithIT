@@ -18,7 +18,7 @@ export default function Home() {
   const fetchRooms = async () => {
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/api/quiz/rooms');
+      const res = await fetch('https://hackwithit-1.onrender.com/api/quiz/rooms');
       const data = await res.json();
       setPublicRooms(data);
     } catch (err) { console.error(err); }
@@ -26,7 +26,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/quiz/categories').then(r => r.json()).then(setCategories);
+    fetch('https://hackwithit-1.onrender.com/api/quiz/categories').then(r => r.json()).then(setCategories);
     fetchRooms();
     socket.on('public_rooms_updated', fetchRooms);
     return () => socket.off('public_rooms_updated');
@@ -36,7 +36,7 @@ export default function Home() {
     if (!user._id) return navigate('/login');
     setCreating(true);
     try {
-      const res = await fetch('http://localhost:5000/api/quiz/room/create-with-quiz', {
+      const res = await fetch('https://hackwithit-1.onrender.com/api/quiz/room/create-with-quiz', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ hostId: user._id, category: selectedCategory })
       });
@@ -52,7 +52,7 @@ export default function Home() {
   const handleJoinLobby = async (roomCode) => {
     if (!user._id) return navigate('/login');
     try {
-      const res = await fetch('http://localhost:5000/api/quiz/room/join', {
+      const res = await fetch('https://hackwithit-1.onrender.com/api/quiz/room/join', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ roomCode, userId: user._id })
       });
@@ -67,7 +67,7 @@ export default function Home() {
     const category = cat || selectedCategory;
     setCreating(true);
     try {
-      const res = await fetch('http://localhost:5000/api/quiz/start', {
+      const res = await fetch('https://hackwithit-1.onrender.com/api/quiz/start', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ category })
       });

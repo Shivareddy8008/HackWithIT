@@ -12,10 +12,10 @@ export default function WaitingRoom() {
   const user = JSON.parse(localStorage.getItem('user') || '{}');
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/quiz/room/${roomCode}`).then(r => r.json()).then(d => { setRoom(d); socket.emit('join_room', { roomCode, userId: user._id }); });
+    fetch(`https://hackwithit-1.onrender.com/api/quiz/room/${roomCode}`).then(r => r.json()).then(d => { setRoom(d); socket.emit('join_room', { roomCode, userId: user._id }); });
     socket.on('room_updated', setRoom);
     socket.on('quiz_started', () => {
-      fetch(`http://localhost:5000/api/quiz/room/${roomCode}`).then(r => r.json()).then(d => { if (d.quizId) localStorage.setItem('currentQuiz', JSON.stringify(d.quizId)); navigate(`/quiz?room=${roomCode}`); });
+      fetch(`https://hackwithit-1.onrender.com/api/quiz/room/${roomCode}`).then(r => r.json()).then(d => { if (d.quizId) localStorage.setItem('currentQuiz', JSON.stringify(d.quizId)); navigate(`/quiz?room=${roomCode}`); });
     });
     return () => { socket.off('room_updated'); socket.off('quiz_started'); };
   }, [roomCode, navigate, user._id]);

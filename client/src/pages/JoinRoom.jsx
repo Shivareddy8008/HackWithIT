@@ -15,7 +15,7 @@ export default function JoinRoom() {
     if (!roomCode || roomCode.length < 6) { setError('Enter a valid 6-character code'); return; }
     setJoining(true); setError('');
     try {
-      const res = await fetch('http://localhost:5000/api/quiz/room/join', {
+      const res = await fetch('https://hackwithit-1.onrender.com/api/quiz/room/join', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ roomCode: roomCode.toUpperCase(), userId: user._id })
       });

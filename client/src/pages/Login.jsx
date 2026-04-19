@@ -11,7 +11,7 @@ export default function Login({ setAuth }) {
   const handleSendOtp = async (e) => {
     e.preventDefault();
     if (!phone) return;
-    const res = await fetch('http://localhost:5000/api/auth/send-otp', {
+    const res = await fetch('https://hackwithit-1.onrender.com/api/auth/send-otp', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ phone })
@@ -21,7 +21,7 @@ export default function Login({ setAuth }) {
 
   const handleVerifyOtp = async (e) => {
     e.preventDefault();
-    const res = await fetch('http://localhost:5000/api/auth/verify-otp', {
+    const res = await fetch('https://hackwithit-1.onrender.com/api/auth/verify-otp', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ phone, otp, username: username || 'Player' })
