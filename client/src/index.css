@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@theme {
+  /* Black & White Theme */
+  --color-qz-bg: #000000;
+  --color-qz-card: #0A0A0A;
+  --color-qz-card-hover: #111111;
+  --color-qz-purple: #FFFFFF; 
+  --color-qz-purple-light: #F0F0F0; 
+  --color-qz-pink: #CCCCCC; 
+  --color-qz-pink-light: #E0E0E0; 
+  --color-qz-cyan: #999999;
+  --color-qz-cyan-light: #AAAAAA;
+  --color-qz-gold: #FFFFFF;
+  --color-qz-gold-light: #F5F5F5;
+  --color-qz-green: #FFFFFF;
+  --color-qz-green-light: #EAEAEA;
+  --color-qz-red: #333333;
+  --color-qz-text: #FFFFFF;
+  --color-qz-text-muted: #888888;
+  --color-qz-border: #333333;
+  --font-sans: 'Inter', 'Roboto', 'Helvetica Neue', sans-serif;
+}
+
+@layer base {
+  body {
+    background: radial-gradient(circle at center top, #222222 0%, #0A0A0A 60%, #000000 100%);
+    background-attachment: fixed;
+    color: var(--color-qz-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-white text-black font-bold py-3 px-6 rounded-full shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] transition-all active:scale-95 text-center flex items-center justify-center;
+  }
+  .btn-gold {
+    @apply bg-[#EEEEEE] text-black font-bold py-3 px-6 rounded-full border-2 border-white hover:bg-white transition-all active:scale-95 text-center flex items-center justify-center;
+  }
+  .btn-cyan {
+    @apply bg-black border-2 border-[#555555] text-white font-bold py-3 px-6 rounded-full hover:border-white transition-all active:scale-95 text-center flex items-center justify-center;
+  }
+  .card-q {
+    @apply bg-[#050505]/90 border border-[#222222] rounded-[24px] p-6 shadow-[0_0_20px_rgba(0,0,0,0.8)] backdrop-blur-md;
+  }
+}
+
+/* Gamification Animations */
+@keyframes confetti-fall {
+  0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+@keyframes pop-in {
+  0% { transform: scale(0.3) rotate(-10deg); opacity: 0; }
+  60% { transform: scale(1.1) rotate(3deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); }
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 15px rgba(255,255,255,0.2); }
+  50% { box-shadow: 0 0 30px rgba(255,255,255,0.6); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes streak {
+  0% { transform: translateX(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+.animate-pop-in { animation: pop-in 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards; }
+.animate-shake { animation: shake 0.5s ease-in-out; }
+.animate-glow-pulse { animation: glow-pulse 2s ease-in-out infinite; }
+.animate-float { animation: float 3s ease-in-out infinite; }
+.animate-streak { animation: streak 1.5s ease-in-out; }
